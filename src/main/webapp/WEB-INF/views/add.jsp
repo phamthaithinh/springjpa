@@ -8,21 +8,21 @@
 color: red;
 }
 </style>
+	<c:if test="${not empty message}">
+		<div id="message" style="background-color: green">${message}</div></c:if>
+	<spring:url value="/manage/add.do" var="action" />
+	<form:form action="${action}" commandName="employee">
 	<spring:hasBindErrors name="employee">
 		<div class="error">
 			<h4>Oops!</h4>
 			<ul>
 				<c:forEach var="error" items="${errors.allErrors}">
-					<li><spring:message code="${error.code}"
-							arguments="${error.arguments}" text="${errMsgObj.defaultMessage}"></spring:message></li>
+					<li><spring:message code="${error.codes[0]}"
+							arguments="${error.arguments}" text="${error.defaultMessage}"></spring:message></li>
 				</c:forEach>
 			</ul>
 		</div>
 	</spring:hasBindErrors>
-	<c:if test="${not empty message}">
-		<div id="message" style="background-color: green">${message}</div></c:if>
-	<spring:url value="/manage/add.do" var="action" />
-	<form:form action="${action}" commandName="employee">
 		<div>
 			<table>
 				<tr>

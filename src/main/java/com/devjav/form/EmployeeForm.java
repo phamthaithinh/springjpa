@@ -6,16 +6,27 @@
  */
 package com.devjav.form;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * 
  * @author Pham Thai Thinh
  * 
  */
 public class EmployeeForm {
+	@NotBlank
 	private String firstName;
+	@NotBlank
 	private String lastName;
+	@NotBlank
+	@Pattern(regexp="[0-9]{10}")
 	private String phone;
 	private String dob;
+	@NotBlank
+	@Email
 	private String email;
 	private String joinDate;
 
